@@ -1,50 +1,38 @@
 local base16 = require 'base16'
 
---  #1d252c
---  #566c7d
---  #db334c
---  #d95468
---  #42cc62
---  #8bd49c
---  #e8a74c
---  #ebbf83
---  #178cd4
---  #5ec4ff
---  #931ba6
---  #c06ece
---  #008b94
---  #70e1e8
---  #a0b3c5
---  #e2e9f0
+
 
 local theme = base16.theme_from_array {
   "000000"; -- base00 — Default Background
-  "1d252c"; -- base01 — Lighter Background (Used for status bars, line numbers, and folding marks)
+  --TODO: change light background
+  "35605a"; -- base01 — Lighter Background (Used for status bars, line numbers, and folding marks)
+
   "1d252c"; -- base02 — Selection Background
   "566c7d"; -- base03 — Comments, Invisibles, Line Highlighting
 	"1d252c"; -- base04 — Dark Foreground (Used for status bars)
   "a0b3c5"; -- base05 — Default Foreground, Caret, Delimiters, Operators
   "c06ece"; -- base06 — Light Foreground (Not often used)
   "1d252c"; -- base07 — Light Background (Not often used)
-	"70e1e8"; -- base08 — Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
-  "42cc62"; -- base09 — Integers, Boolean, Constants, XML Attributes, Markup Link Url
-  "8bd49c"; -- base0A — Classes, Markup Bold, Search Text Background
-  "931ba6"; -- base0B — Strings, Inherited Class, Markup Code, Diff Inserted
-	"178cd4"; -- base0C — Support, Regular Expressions, Escape Characters, Markup Quotes
-  "70e1e8"; -- base0D — Functions, Methods, Attribute IDs, Headings
+
+	"01f0fb"; -- base08 — Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
+  "002fa4"; -- base09 — Integers, Boolean, Constants, XML Attributes, Markup Link Url
+  "f9b9f2"; -- base0A — Classes, Markup Bold, Search Text Background
+  "802392"; -- base0B — Strings, Inherited Class, Markup Code, Diff Inserted
+	"f9b9f2"; -- base0C — Support, Regular Expressions, Escape Characters, Markup Quotes
+  "002fa4"; -- base0D — Functions, Methods, Attribute IDs, Headings
   "ebbf83"; -- base0E — Keywords, Storage, Selector, Markup Italic, Diff Changed
   "5ec4ff"; -- base0F — Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?>
 }
 base16(theme, true)
 
-vim.api.nvim_set_hl(0, "LineNr", { fg = "#008b94", bg = "#000000" })
+-- vim.api.nvim_set_hl(0, "LineNr", { fg = "#008b94", bg = "#000000" })
 -- vim.api.nvim_set_hl(0, "Pmenu", { fg = "#1d252c", bg= "#70e1e8" })
 -- vim.api.nvim_set_hl(0, "PmenuSel", { fg = "#1d252c", bg = "#008b94" })
-
-vim.api.nvim_set_hl(0, "VimwikiLink", { fg = "#178cd4", bg = "#000000",  underline = true})
-vim.api.nvim_set_hl(0, "VimwikiMarkers", { fg = "#931ba6", bg = "#000000"})
-vim.api.nvim_set_hl(0, "Identifier", { fg = "#e8a74c", bg = "#000000"})
-vim.api.nvim_set_hl(0, "Winseparator", {bg = "None"}) -- Separator between window splits. Inherts from |hl-VertSplit| by default, which it will replace eventually.
+--
+-- vim.api.nvim_set_hl(0, "VimwikiLink", { fg = "#178cd4", bg = "#000000",  underline = true})
+-- vim.api.nvim_set_hl(0, "VimwikiMarkers", { fg = "#931ba6", bg = "#000000"})
+-- vim.api.nvim_set_hl(0, "Identifier", { fg = "#e8a74c", bg = "#000000"})
+-- vim.api.nvim_set_hl(0, "Winseparator", {bg = "None"}) -- Separator between window splits. Inherts from |hl-VertSplit| by default, which it will replace eventually.
     --
 -- vim.api.nvim_set_hl(0, "VimwikiBoldItalic", { fg = "#e8a74c", bg = "#000000"})
 --

@@ -16,7 +16,7 @@ vim.g.mapleader = " "
 
 -- TODO: format and recompile should prob be auto commands
 -- Format
-vim.keymap.set("n", "<leader>c", ":lua vim.lsp.buf.format()<CR>", opts)
+vim.keymap.set("n", "<leader>c", ":lua _G.format_code()<CR>", opts)
 -- TODO: set up range formatting
 --vim.keymap.set("v", "<leader>c", ":lua vim.lsp.buf.range_formatting()<CR>", opts)
 

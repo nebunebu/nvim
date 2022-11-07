@@ -102,9 +102,7 @@ return require("packer").startup(function(use)
 	})
 
 	--[[ Project ]]
-	--
 	--[[ Color ]]
-	--
 	use("uga-rosa/ccc.nvim") -- super powerful color picker
 
 	--[[ Colorscheme ]]
@@ -147,6 +145,7 @@ return require("packer").startup(function(use)
 	use("kyazdani42/nvim-web-devicons")
 	use({ "crusj/bookmarks.nvim", branch = "main", requires = { "kyazdani42/nvim-web-devicons" } })
 
+  use "nvim-lua/popup.nvim"
 	-- use({
 	--   "folke/noice.nvim",
 	--   config = function()
@@ -165,22 +164,32 @@ return require("packer").startup(function(use)
 	--[[ Terminal Integration ]]
 	--
 	--[[ Test ]]
-  use {
-    "nvim-neotest/neotest",
-    requires = {
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-      "antoinemadec/FixCursorHold.nvim",
-      "olimorris/neotest-rspec",
-    },
-    config = function()
-      require("neotest").setup({
-        adapters = {
-          require("neotest-rspec"),
-        }
-      })
-    end
-  }
+	--TODO: move to neotest.lua
+	use("olimorris/neotest-rspec")
+	use({
+		"nvim-neotest/neotest",
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"nvim-treesitter/nvim-treesitter",
+			"antoinemadec/FixCursorHold.nvim",
+			"olimorris/neotest-rspec",
+		},
+		config = function()
+			require("neotest").setup({
+				adapters = {
+					require("neotest-rspec")({
+						rspec_cmd = function()
+							return vim.tbl_flatten({
+								"bundle",
+								"exec",
+								"rspec",
+							})
+						end,
+					}),
+				},
+			})
+		end,
+	})
 	--[[ Code Runner ]]
 	--
 	--[[ Neovim Lua Development ]]
