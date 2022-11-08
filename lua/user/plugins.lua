@@ -225,18 +225,17 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	require("nvim-treesitter.configs").setup({
-		autotag = {
-			enable = true,
-		},
-	})
-
+	use("RRethy/nvim-treesitter-endwise")
+	use("windwp/nvim-ts-autotag")
 	use("p00f/nvim-ts-rainbow")
 
 	use("terrortylor/nvim-comment")
 	require("nvim_comment").setup()
 
-	use({ "Djancyp/better-comments.nvim", requires = { "nvim-treesitter/nvim-treesitter" } })
+	use({
+		"Djancyp/better-comments.nvim",
+		requires = { "nvim-treesitter/nvim-treesitter" },
+	})
 
 	--[[ Command Line ]]
 	--
