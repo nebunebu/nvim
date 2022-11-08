@@ -145,7 +145,7 @@ return require("packer").startup(function(use)
 	use("kyazdani42/nvim-web-devicons")
 	use({ "crusj/bookmarks.nvim", branch = "main", requires = { "kyazdani42/nvim-web-devicons" } })
 
-  use "nvim-lua/popup.nvim"
+	use("nvim-lua/popup.nvim")
 	-- use({
 	--   "folke/noice.nvim",
 	--   config = function()
