@@ -9,13 +9,17 @@ require("null-ls").setup({
     -- lsp: sumneko_lua
 		require("null-ls").builtins.diagnostics.luacheck,
 		require("null-ls").builtins.formatting.stylua,
-    
+
     -- Shell
     -- lsp:
 		require("null-ls").builtins.code_actions.shellcheck,
 		require("null-ls").builtins.formatting.beautysh,
 		-- require("null-ls").builtins.hover.printenv,
 
+    -- html
+    require("null-ls").builtins.formatting.prettier,
+    -- require("null-ls").builtins.diagnostics.tidy,
+    --
 		-- -- Latex
 		-- require("null-ls").builtins.code_actions.proselint,
 		-- require("null-ls").builtins.diagnostics.chktex,

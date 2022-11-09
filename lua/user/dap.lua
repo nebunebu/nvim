@@ -1,53 +1,127 @@
-local dap = require "dap"
+local M = {}
 
-dap.configurations.lua = {
-  {
-    type = 'nlua',
-    request = 'attach',
-    name = "Attach to running Neovim instance",
+M.config = function()
+  lvim.builtin.dap = {
+    active = true,
+    on_config_done = nil,
+    breakpoint = {
+      text = lvim.icons.ui.Bug,
+      texthl = "DiagnosticSignError",
+      linehl = "",
+      numhl = "",
+    },
+    breakpoint_rejected = {
+      text = lvim.icons.ui.Bug,
+      texthl = "DiagnosticSignError",
+      linehl = "",
+      numhl = "",
+    },
+    stopped = {
+      text = lvim.icons.ui.BoldArrowRight,
+      texthl = "DiagnosticSignWarn",
+      linehl = "Visual",
+      numhl = "DiagnosticSignWarn",
+    },
+    ui = {
+      auto_open = true,
+    },
   }
-}
-
-dap.adapters.nlua = function(callback, config)
-  callback({ type = 'server', host = config.host or "127.0.0.1", port = config.port or 8086 })
-
 end
 
-vim.api.nvim_set_keymap('n', '<F8>', [[:lua require"dap".toggle_breakpoint()<CR>]], { noremap = true })
-vim.api.nvim_set_keymap('n', '<F9>', [[:lua require"dap".continue()<CR>]], { noremap = true })
-vim.api.nvim_set_keymap('n', '<F10>', [[:lua require"dap".step_over()<CR>]], { noremap = true })
-vim.api.nvim_set_keymap('n', '<S-F10>', [[:lua require"dap".step_into()<CR>]], { noremap = true })
-vim.api.nvim_set_keymap('n', '<F12>', [[:lua require"dap.ui.widgets".hover()<CR>]], { noremap = true })
-vim.api.nvim_set_keymap('n', '<F5>', [[:lua require"osv".launch({port = 8086})<CR>]], { noremap = true })
+M.setup = function()
+  local status_ok, dap = pcall(require, "dap")
+  if not status_ok then
+    return
+  end
 
--- Debugging
---[[
-vim.keymap.set("n", "<F4>", ":lua require('dapui').toggle()<CR>", opts)
-vim.keymap.set("n", "<F5>", ":lua require('dap').toggle_breakpoint()<CR>", opts)
-vim.keymap.set("n", "<F9>", ":lua require('dap').continue()<CR>", opts)
+  if lvim.use_icons then
+    vim.fn.sign_define("DapBreakpoint", lvim.builtin.dap.breakpoint)
+    vim.fn.sign_define("DapBreakpointRejected", lvim.builtin.dap.breakpoint_rejected)
+    vim.fn.sign_define("DapStopped", lvim.builtin.dap.stopped)
+  end
 
-vim.keymap.set("n", "<F1>", ":lua require('dap').step_over()<CR>", opts)
-vim.keymap.set("n", "<F2>", ":lua require('dap').step_into()<CR>", opts)
-vim.keymap.set("n", "<F3>", ":lua require('dap').step_out()<CR>", opts)
+  lvim.builtin.which_key.mappings["d"] = {
+    name = "Debug",
+    t = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },
+    b = { "<cmd>lua require'dap'.step_back()<cr>", "Step Back" },
+    c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
+    C = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run To Cursor" },
+    d = { "<cmd>lua require'dap'.disconnect()<cr>", "Disconnect" },
+    g = { "<cmd>lua require'dap'.session()<cr>", "Get Session" },
+    i = { "<cmd>lua require'dap'.step_into()<cr>", "Step Into" },
+    o = { "<cmd>lua require'dap'.step_over()<cr>", "Step Over" },
+    u = { "<cmd>lua require'dap'.step_out()<cr>", "Step Out" },
+    p = { "<cmd>lua require'dap'.pause()<cr>", "Pause" },
+    r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Toggle Repl" },
+    s = { "<cmd>lua require'dap'.continue()<cr>", "Start" },
+    q = { "<cmd>lua require'dap'.close()<cr>", "Quit" },
+    U = { "<cmd>lua require'dapui'.toggle()<cr>", "Toggle UI" },
+  }
 
-vim.keymap.set("n", "<Leader>dsc", ":lua require('dap').continue()<CR>", opts)
-vim.keymap.set("n", "<Leader>dsv", ":lua require('dap').step_over()<CR>", opts)
-vim.keymap.set("n", "<Leader>dsi", ":lua require('dap').step_into()<CR>", opts)
-vim.keymap.set("n", "<Leader>dso", ":lua require('dap').step_out()<CR>", opts)
+  if lvim.builtin.dap.on_config_done then
+    lvim.builtin.dap.on_config_done(dap)
+  end
+end
 
-vim.keymap.set("n", "<Leader>dhh", ":lua require('dap.ui.variables').hover()<CR>", opts)
-vim.keymap.set("v", "<Leader>dhv", ":lua require('dap.ui.variables').visual_hover()<CR>", opts)
+M.setup_ui = function()
+  local status_ok, dap = pcall(require, "dap")
+  if not status_ok then
+    return
+  end
+  local dapui = require "dapui"
+  dapui.setup {
+    expand_lines = true,
+    icons = { expanded = "", collapsed = "", circular = "" },
+    mappings = {
+      -- Use a table to apply multiple mappings
+      expand = { "<CR>", "<2-LeftMouse>" },
+      open = "o",
+      remove = "d",
+      edit = "e",
+      repl = "r",
+      toggle = "t",
+    },
+    layouts = {
+      {
+        elements = {
+          { id = "scopes", size = 0.33 },
+          { id = "breakpoints", size = 0.17 },
+          { id = "stacks", size = 0.25 },
+          { id = "watches", size = 0.25 },
+        },
+        size = 0.33,
+        position = "right",
+      },
+      {
+        elements = {
+          { id = "repl", size = 0.45 },
+          { id = "console", size = 0.55 },
+        },
+        size = 0.27,
+        position = "bottom",
+      },
+    },
+    floating = {
+      max_height = 0.9,
+      max_width = 0.5, -- Floats will be treated as percentage of your screen.
+      border = vim.g.border_chars, -- Border style. Can be 'single', 'double' or 'rounded'
+      mappings = {
+        close = { "q", "<Esc>" },
+      },
+    },
+  }
 
-vim.keymap.set("n", "<Leader>duh", ":lua require('dap.ui.widgets').hover()<CR>", opts)
-vim.keymap.set("n", "<Leader>duf", ":lua local widgets=require('dap.ui.widgets');widgets.centered_float(widgets.scopes)<CR>", opts)
+  if lvim.builtin.dap.ui.auto_open then
+    dap.listeners.after.event_initialized["dapui_config"] = function()
+      dapui.open()
+    end
+    -- dap.listeners.before.event_terminated["dapui_config"] = function()
+    --   dapui.close()
+    -- end
+    -- dap.listeners.before.event_exited["dapui_config"] = function()
+    --   dapui.close()
+    -- end
+  end
+end
 
-vim.keymap.set("n", "<Leader>dro", ":lua require('dap').repl.open()<CR>", opts)
-vim.keymap.set("n", "<Leader>drl", ":lua require('dap').repl.run_last()<CR>", opts)
-
-vim.keymap.set("n", "<Leader>dbc", ":lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", opts)
-vim.keymap.set("n", "<Leader>dbm", ":lua require('dap').set_breakpoint({ nil, nil, vim.fn.input('Log point message: ')<CR>", opts)
-vim.keymap.set("n", "<Leader>dbt", ":lua require('dap').toggle_breakpoint()<CR>", opts)
-vim.keymap.set("n", "<Leader>dc", ":lua require('dap.ui.variables').scopes()<CR>", opts)
-vim.keymap.set("n", "<Leader>di", ":lua require('dapui').toggle()<CR>", opts)
-]]
---
+return M

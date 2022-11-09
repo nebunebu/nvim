@@ -8,7 +8,6 @@ return require("packer").startup(function(use)
 	use("nvim-lua/plenary.nvim")
 
 	--[[ Package Manager ]]
-	--
 	use({
 		"williamboman/mason.nvim",
 		"WhoISSethDaniel/mason-tool-installer.nvim",
@@ -24,7 +23,6 @@ return require("packer").startup(function(use)
 	use("jose-elias-alvarez/null-ls.nvim")
 
 	--[[ LSP ]]
-	--
 	use("neovim/nvim-lspconfig")
 	use({
 		"glepnir/lspsaga.nvim",
@@ -39,7 +37,6 @@ return require("packer").startup(function(use)
 	})
 
 	--[[ Debugging ]]
-	--
 	use("mfussenegger/nvim-dap")
 	use("Pocco81/dap-buddy.nvim")
 	use("rcarriga/nvim-dap-ui")
@@ -49,7 +46,6 @@ return require("packer").startup(function(use)
 	--[[ Formatting ]]
 	--
 	--[[ Completion ]]
-	--
 	use("hrsh7th/nvim-cmp") -- The completion plugin
 	use("hrsh7th/cmp-nvim-lsp") -- LSP source for nvim-cmp
 	use("hrsh7th/cmp-buffer") -- buffer completions
@@ -58,19 +54,16 @@ return require("packer").startup(function(use)
 	use("saadparwaiz1/cmp_luasnip") -- snippet completions
 	use("amarakon/nvim-cmp-lua-latex-symbols")
 	--[[ Programming Language Support]]
-	--
 
 	--[[ Web Development ]]
 	-- TODO: add emmet
 	--[[ Markdown/LaTex ]]
-	--
 	-- -- requires deno
 	-- use({ 'toppair/peek.nvim', run = 'deno task --quiet build:fast' }) -- Markdown Preview Plugin
 
 	--[[ Syntax ]]
 	--
 	--[[ Snippet ]]
-	--
 	use("L3MON4D3/LuaSnip") -- snippet engine
 	use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
 
@@ -110,7 +103,6 @@ return require("packer").startup(function(use)
 	use({ "norcalli/nvim-base16.lua", requires = { "norcalli/nvim.lua" } })
 
 	--[[ Statusline ]]
-	--
 	use({
 		"konapun/vacuumline.nvim",
 		requires = {
@@ -126,7 +118,6 @@ return require("packer").startup(function(use)
 	--[[ Cursorline ]]
 	--
 	--[[ Startup ]]
-	--
 	-- use "glepnir/dashboard-nvim"
 
 	--[[ Icon ]]
@@ -134,17 +125,12 @@ return require("packer").startup(function(use)
 	--[[ Media ]]
 	--
 	--[[ Note Taking ]]
-	--
 	use("vimwiki/vimwiki")
-	-- neuron
 
 	--[[ Utility ]]
-	--
 	use("stevearc/dressing.nvim") --improve built-in vim.ui interfaces
-
 	use("kyazdani42/nvim-web-devicons")
 	use({ "crusj/bookmarks.nvim", branch = "main", requires = { "kyazdani42/nvim-web-devicons" } })
-
 	use("nvim-lua/popup.nvim")
 	-- use({
 	--   "folke/noice.nvim",
@@ -191,17 +177,11 @@ return require("packer").startup(function(use)
 		end,
 	})
 	--[[ Code Runner ]]
-	--
 	--[[ Neovim Lua Development ]]
-	--
 	--[[ Dependency Management ]]
-	--
 	--[[ Git ]]
-	--
 	--[[ Github ]]
-	--
 	--[[ Motion ]]
-	--
 	use({
 		"phaazon/hop.nvim",
 		branch = "v2", -- optional but strongly recommended
@@ -211,46 +191,30 @@ return require("packer").startup(function(use)
 		end,
 	})
 	require("hop").setup()
-
 	--[[ Keybinding ]]
-	--
 	--[[ Scrolling ]]
-	--
 	--[[ Editing Support ]]
-	--
 	use({
 		"windwp/nvim-autopairs",
 		config = function()
 			require("nvim-autopairs").setup({})
 		end,
 	})
-
 	use("RRethy/nvim-treesitter-endwise")
 	use("windwp/nvim-ts-autotag")
 	use("p00f/nvim-ts-rainbow")
-
 	use("terrortylor/nvim-comment")
-	require("nvim_comment").setup()
-
+	  require("nvim_comment").setup()
 	use({
 		"Djancyp/better-comments.nvim",
 		requires = { "nvim-treesitter/nvim-treesitter" },
 	})
-
 	--[[ Command Line ]]
-	--
 	--[[ Session ]]
-	--
 	--[[ Remote Development ]]
-	--
 	--[[ Split and Window ]]
-	--
 	--[[ Game ]]
-	--
 	--[[ Boilerplate ]]
-	--
-
 	--[[ My Developent ]]
-	--
-	-- use "/home/nebu/Projects/nvim_plugins/stack_map.nvim"
+	  -- use "/home/nebu/Projects/nvim_plugins/stack_map.nvim"
 end)

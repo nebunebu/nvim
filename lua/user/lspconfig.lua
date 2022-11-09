@@ -13,7 +13,12 @@ local servers = {
 	-- lua
 	"sumneko_lua",
   -- bash
-  "bashls"
+  "bashls",
+  -- html
+  "html",
+  -- latex
+  -- c
+  -- json
 }
 
 for _, lsp in ipairs(servers) do
@@ -68,8 +73,9 @@ cmp.setup({
 	},
 })
 
+require("lspconfig").html.setup({})
 require("lspconfig").solargraph.setup({})
-
+require("lspconfig").bashls.setup({})
 require("lspconfig").sumneko_lua.setup({
 	settings = {
 		Lua = {
@@ -93,4 +99,3 @@ require("lspconfig").sumneko_lua.setup({
 	},
 })
 
-require("lspconfig").bashls.setup({})
