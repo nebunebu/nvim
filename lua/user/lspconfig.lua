@@ -16,6 +16,8 @@ local servers = {
   "bashls",
   -- html
   "html",
+  --css
+  "cssls"
   -- latex
   -- c
   -- json
@@ -74,6 +76,7 @@ cmp.setup({
 })
 
 require("lspconfig").html.setup({})
+require("lspconfig").cssls.setup({})
 require("lspconfig").solargraph.setup({})
 require("lspconfig").bashls.setup({})
 require("lspconfig").sumneko_lua.setup({

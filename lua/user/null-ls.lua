@@ -19,7 +19,8 @@ require("null-ls").setup({
     -- html
     require("null-ls").builtins.formatting.prettier,
     -- require("null-ls").builtins.diagnostics.tidy,
-    --
+    -- css
+    -- require("null-ls").builtins.diagnostics.stylelint,
 		-- -- Latex
 		-- require("null-ls").builtins.code_actions.proselint,
 		-- require("null-ls").builtins.diagnostics.chktex,
