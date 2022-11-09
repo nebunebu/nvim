@@ -80,9 +80,10 @@ return require("packer").startup(function(use)
 		tag = "0.1.0",
 	})
 	use({ "axkirillov/easypick.nvim", requires = "nvim-telescope/telescope.nvim" })
-
 	use("ElPiloto/telescope-vimwiki.nvim")
 	require("telescope").load_extension("vw")
+  use("xiyaowong/telescope-emoji.nvim")
+  require("telescope").load_extension("emoji")
 
 	--[[ File Explorer ]]
 	--
