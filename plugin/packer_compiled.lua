@@ -149,6 +149,11 @@ _G.packer_plugins = {
     path = "/home/nebu/.local/share/nvim/site/pack/packer/start/galaxyline.nvim",
     url = "https://github.com/glepnir/galaxyline.nvim"
   },
+  ["glow.nvim"] = {
+    loaded = true,
+    path = "/home/nebu/.local/share/nvim/site/pack/packer/start/glow.nvim",
+    url = "https://github.com/ellisonleao/glow.nvim"
+  },
   ["hop.nvim"] = {
     config = { "\27LJ\2\nU\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\tkeys\28etovxqpdygfblzhckisuran\nsetup\bhop\frequire\0" },
     loaded = true,
@@ -268,6 +273,16 @@ _G.packer_plugins = {
     path = "/home/nebu/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
+  ["nvim-treesitter-endwise"] = {
+    loaded = true,
+    path = "/home/nebu/.local/share/nvim/site/pack/packer/start/nvim-treesitter-endwise",
+    url = "https://github.com/RRethy/nvim-treesitter-endwise"
+  },
+  ["nvim-ts-autotag"] = {
+    loaded = true,
+    path = "/home/nebu/.local/share/nvim/site/pack/packer/start/nvim-ts-autotag",
+    url = "https://github.com/windwp/nvim-ts-autotag"
+  },
   ["nvim-ts-rainbow"] = {
     loaded = true,
     path = "/home/nebu/.local/share/nvim/site/pack/packer/start/nvim-ts-rainbow",
@@ -303,6 +318,11 @@ _G.packer_plugins = {
     path = "/home/nebu/.local/share/nvim/site/pack/packer/start/popup.nvim",
     url = "https://github.com/nvim-lua/popup.nvim"
   },
+  ["telescope-emoji.nvim"] = {
+    loaded = true,
+    path = "/home/nebu/.local/share/nvim/site/pack/packer/start/telescope-emoji.nvim",
+    url = "https://github.com/xiyaowong/telescope-emoji.nvim"
+  },
   ["telescope-vimwiki.nvim"] = {
     loaded = true,
     path = "/home/nebu/.local/share/nvim/site/pack/packer/start/telescope-vimwiki.nvim",
@@ -326,6 +346,14 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: neotest
+time([[Config for neotest]], true)
+try_loadstring("\27LJ\2\n=\0\0\3\0\3\0\0046\0\0\0009\0\1\0005\2\2\0D\0\2\0\1\4\0\0\vbundle\texec\nrspec\16tbl_flatten\bvimè\1\1\0\b\0\t\1\0176\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\a\0004\3\3\0006\4\0\0'\6\3\0B\4\2\0025\6\5\0003\a\4\0=\a\6\6B\4\2\0?\4\0\0=\3\b\2B\0\2\1K\0\1\0\radapters\1\0\0\14rspec_cmd\1\0\0\0\18neotest-rspec\nsetup\fneotest\frequire\3ÄÄ¿ô\4\0", "config", "neotest")
+time([[Config for neotest]], false)
+-- Config for: hop.nvim
+time([[Config for hop.nvim]], true)
+try_loadstring("\27LJ\2\nU\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\tkeys\28etovxqpdygfblzhckisuran\nsetup\bhop\frequire\0", "config", "hop.nvim")
+time([[Config for hop.nvim]], false)
 -- Config for: nvim-autopairs
 time([[Config for nvim-autopairs]], true)
 try_loadstring("\27LJ\2\n@\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\19nvim-autopairs\frequire\0", "config", "nvim-autopairs")
@@ -334,14 +362,6 @@ time([[Config for nvim-autopairs]], false)
 time([[Config for lspsaga.nvim]], true)
 try_loadstring("\27LJ\2\nA\0\0\4\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\1\2\0004\3\0\0B\1\2\1K\0\1\0\18init_lsp_saga\flspsaga\frequire\0", "config", "lspsaga.nvim")
 time([[Config for lspsaga.nvim]], false)
--- Config for: hop.nvim
-time([[Config for hop.nvim]], true)
-try_loadstring("\27LJ\2\nU\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\tkeys\28etovxqpdygfblzhckisuran\nsetup\bhop\frequire\0", "config", "hop.nvim")
-time([[Config for hop.nvim]], false)
--- Config for: neotest
-time([[Config for neotest]], true)
-try_loadstring("\27LJ\2\n=\0\0\3\0\3\0\0046\0\0\0009\0\1\0005\2\2\0D\0\2\0\1\4\0\0\vbundle\texec\nrspec\16tbl_flatten\bvimè\1\1\0\b\0\t\1\0176\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\a\0004\3\3\0006\4\0\0'\6\3\0B\4\2\0025\6\5\0003\a\4\0=\a\6\6B\4\2\0?\4\0\0=\3\b\2B\0\2\1K\0\1\0\radapters\1\0\0\14rspec_cmd\1\0\0\0\18neotest-rspec\nsetup\fneotest\frequire\3ÄÄ¿ô\4\0", "config", "neotest")
-time([[Config for neotest]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

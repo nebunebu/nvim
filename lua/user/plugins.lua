@@ -16,6 +16,7 @@ return require("packer").startup(function(use)
 		"jayp0521/mason-nvim-dap.nvim",
 		"RubixDev/mason-update-all",
 	})
+
 	require("mason").setup()
 	require("mason-update-all").setup()
 
@@ -58,6 +59,7 @@ return require("packer").startup(function(use)
 	--[[ Web Development ]]
 	-- TODO: add emmet
 	--[[ Markdown/LaTex ]]
+  use("ellisonleao/glow.nvim")
 	-- -- requires deno
 	-- use({ 'toppair/peek.nvim', run = 'deno task --quiet build:fast' }) -- Markdown Preview Plugin
 

@@ -7,7 +7,9 @@ require("null-ls").setup({
 
     -- Lua
     -- lsp: sumneko_lua
+  
 		require("null-ls").builtins.diagnostics.luacheck,
+
 		require("null-ls").builtins.formatting.stylua,
 
     -- Shell
