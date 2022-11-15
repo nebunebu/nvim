@@ -74,7 +74,8 @@ return require("packer").startup(function(use)
 	--[[ Marks ]]
 	--
 	--[[ Search ]]
-	--
+	use("RishabhRD/popfix")
+	use("RishabhRD/nvim-cheat.sh")
 	--[[ Fuzzy Finder ]]
 	--
 	use({
@@ -102,7 +103,6 @@ return require("packer").startup(function(use)
 	use("uga-rosa/ccc.nvim") -- super powerful color picker
 
 	--[[ Colorscheme ]]
-	--
 	use({ "norcalli/nvim-base16.lua", requires = { "norcalli/nvim.lua" } })
 
 	--[[ Statusline ]]

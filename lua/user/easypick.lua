@@ -16,8 +16,8 @@ easypick.setup({
 		},
 
 		{
-			name = "",
-			command = "",
+			name = "cheat",
+			command = "curl https://cheat.sh/:list",
 			previewer = easypick.previewers.default(),
 		},
 	},
