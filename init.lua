@@ -1,0 +1,16 @@
+-- lua/config/
+require "config.options"
+require "config.colors"
+require "config.funcs"
+require "config.lazy"
+require "config.autocommands"
+-- lua/plugins/
+require "plugins.plugins"
+require "plugins.treesitter"
+require "plugins.comment"
+require "plugins.whichkey"
+require "plugins.mkdnflow"
+require "plugins.mdeval"
+require "plugins.alpha"
+require "plugins.mason"
+require "plugins.efmls"
