@@ -4,10 +4,15 @@ local options = {
     fillchars = { eob =" " },
     number = true,
     relativenumber = true,
+		expandtab = true,
     shiftwidth = 2,
     tabstop = 2,
     undofile = true,
     swapfile = false,
+
+-- set expandtab
+-- set tabstop=4
+-- set shiftwidth=4
   },
   g = {
     mapleader = " ",

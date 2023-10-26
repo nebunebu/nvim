@@ -59,6 +59,10 @@ wk.register({
 			h =
 			{ "<cmd>Telescope help_tags<CR>",
 				"Find help tags"
+			},
+			n =
+			{ "<cmd>Nerdy<CR>",
+				"Find nerd font icon"
 			}
 		},
 		h = {
@@ -92,9 +96,9 @@ wk.register({
 		w = {
 			"<cmd>:HopWord<CR>",
 			"Hop word"
-		}
+		},
 	},
-	}
+}
 }, { mode = "n" })
 
 -- Visual Mode
@@ -115,3 +119,7 @@ wk.register({
 		}
 	}
 }, { mode = "x" })
+
+
+
+
